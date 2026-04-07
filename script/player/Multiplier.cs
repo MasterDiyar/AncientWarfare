@@ -8,9 +8,9 @@ namespace Chaos.script.player
         ThreeFourths = 5,
         One = 6,
         FiveFourths = 7,
-        ThreeAndHalf = 8, 
+        OneAndHalf = 8, 
         Two = 9,
-        TwoPointFive = 10, 
+        TwoAndHalf = 10, 
         Three = 11,
         Ten = 12
     }
