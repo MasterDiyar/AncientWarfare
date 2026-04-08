@@ -1,21 +1,25 @@
+using Chaos.script.player;
 using Godot;
-using System;
 
-public class Picker : Control
-{
-    // Declare member variables here. Examples:
-    // private int a = 2;
-    // private string b = "text";
-
-    // Called when the node enters the scene tree for the first time.
+namespace Chaos.script {
+public class Picker : Control {
+    private HBoxContainer _spawnNode;
     public override void _Ready()
     {
-        
+        _spawnNode = GetNode<HBoxContainer>("HBoxContainer");
+        InitBlocks();
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    public void InitBlocks(int count = 4)
+    {
+        var scene = GD.Load<PackedScene>("res://scene/ui/Block.tscn");
+    
+        for (int i = 0; i < count; i++){
+            var block = scene.Instance<Block>();
+            block.Randomize();
+            block.Initialize();
+            _spawnNode.AddChild(block);
+        }
+    }
+}
 }

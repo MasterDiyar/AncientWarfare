@@ -35,6 +35,14 @@ public static class ImageLoader {
         [Multiplier.Third] = "res://assets/mult/Third.png",
         [Multiplier.Half] = "res://assets/mult/Half.png",
         [Multiplier.TwoThirds] = "res://assets/mult/TwoThirds.png",
+        [Multiplier.ThreeFourths] = "res://assets/mult/ThreeFourth.png",
+        [Multiplier.One] = "res://assets/mult/One.png",
+        [Multiplier.FiveFourths] = "res://assets/mult/FiveFourth.png",
+        [Multiplier.OneAndHalf] = "res://assets/mult/OneAndHalf.png",
+        [Multiplier.Two] = "res://assets/mult/Two.png",
+        [Multiplier.TwoAndHalf] = "res://assets/mult/TwoAndHalf.png",
+        [Multiplier.Three] = "res://assets/mult/Three.png",
+        [Multiplier.Ten] = "res://assets/mult/Ten.png"
     };
     
     public static Texture MultImage(Multiplier mult) => GD.Load<Texture>(MultImageDict[mult]);

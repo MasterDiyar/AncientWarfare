@@ -9,14 +9,26 @@ public class BlockContainer : Container
     public Multiplier  Mut;
     public Act         Act;
 
-    [Export] public TextureRect BaseText, DirText, DurText, MultText, EffectText;
+    public TextureRect BaseText, DirText, DurText, MultText, EffectText;
+
+    public override void _Ready()
+    {
+        BaseText = GetNode<TextureRect>("Base");
+        DirText = GetNode<TextureRect>("Direction");
+        DurText = GetNode<TextureRect>("Duration");
+        MultText = GetNode<TextureRect>("Multiplication");
+        EffectText = GetNode<TextureRect>("Effect");
+    }
 
     public void Initialize(Duration duration, Direction dir, Multiplier mut, Act act)
     {
+        _Ready();
+        GD.Print("Kakoi moment???");
         Dur = duration;
         Dir = dir;
         Mut = mut;
         Act   = act;
+        GD.Print("TakoiMoment");
 
         BaseText.Texture = ImageLoader.ActImage(Act);
         DirText.Texture  = ImageLoader.DirImage(Dir);

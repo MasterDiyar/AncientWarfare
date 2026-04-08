@@ -8,31 +8,32 @@ public class Block : Button
 	[Export] public Act Act;
 	[Export] public Direction Direction;
 	[Export] public Duration Duration;
+	
 
-
-
-	public override void _Ready()
+	public void Initialize(bool random = true)
 	{
-	
+		if (random)
+			Randomize();
+		
+		var bc = GD.Load<PackedScene>("res://scene/ui/BlockContainer.tscn").Instance<BlockContainer>();
+		AddChild(bc);
+		bc.Initialize(Duration, Direction, Multiplier, Act);
+		
 	}
 
-	public void Operate(){
-	
-	
-	}
-
 	
 
-	public Block RandomBlock() {
+	public void Randomize() {
 		Multiplier = (Multiplier)(GD.Randi() % MultiplierCount);
 		Act = (Act)(GD.Randi() % ActCount);
 		Direction = (Direction)(GD.Randi() % DirectionCount);
+		Duration = (Duration)(GD.Randi() % DurationCount);
     
-		return this;
 	}
 	private static readonly int MultiplierCount = Enum.GetNames(typeof(Multiplier)).Length;
     private static readonly int ActCount = Enum.GetNames(typeof(Act)).Length;
     private static readonly int DirectionCount = Enum.GetNames(typeof(Direction)).Length;
+    private static readonly int DurationCount = Enum.GetNames(typeof(Duration)).Length;
 }
 
 }
