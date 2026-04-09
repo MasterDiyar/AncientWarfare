@@ -18,8 +18,16 @@ public class Picker : Control {
             var block = scene.Instance<Block>();
             block.Randomize();
             block.Initialize();
+            
+            var binds = new Godot.Collections.Array { block };
+            block.Connect("pressed", this, nameof(onPress), binds);
             _spawnNode.AddChild(block);
         }
+    }
+
+    void onPress(Block block)
+    {
+        GD.Print($"Нажат блок: {block.Name}, действие: {block.Act}");
     }
 }
 }

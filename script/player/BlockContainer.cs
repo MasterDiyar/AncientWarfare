@@ -18,6 +18,7 @@ public class BlockContainer : Container
         DurText = GetNode<TextureRect>("Duration");
         MultText = GetNode<TextureRect>("Multiplication");
         EffectText = GetNode<TextureRect>("Effect");
+        SetPosition(new Vector2(4, 4));
     }
 
     public void Initialize(Duration duration, Direction dir, Multiplier mut, Act act)
