@@ -1,6 +1,7 @@
 namespace Chaos.script.player
 {
     public enum Multiplier {
+        Zero = 0,
         Quarter = 1,
         Third = 2,        
         Half = 3,        

@@ -4,9 +4,13 @@ using Godot;
 namespace Chaos.script {
 public class Picker : Control {
     private HBoxContainer _spawnNode;
+    private VBoxContainer _placeNode;
+    private Button playButton;
     public override void _Ready()
     {
         _spawnNode = GetNode<HBoxContainer>("HBoxContainer");
+        _placeNode = GetNode<VBoxContainer>("VBoxContainer");
+        playButton = GetNode<Button>("Button");
         InitBlocks();
     }
 
@@ -27,7 +31,16 @@ public class Picker : Control {
 
     void onPress(Block block)
     {
-        GD.Print($"Нажат блок: {block.Name}, действие: {block.Act}");
+        _spawnNode.RemoveChild(block);
+        _placeNode.AddChild(block);
+        Reload();
+    }
+
+    void Reload(int count = 4)
+    {
+        foreach (Node blocky in _spawnNode.GetChildren())
+                    _spawnNode.RemoveChild(blocky);
+        InitBlocks(count);
     }
 }
 }

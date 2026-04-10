@@ -31,6 +31,7 @@ public static class ImageLoader {
     #region Multiplier
 
     private static readonly Dictionary<Multiplier, string> MultImageDict = new Dictionary<Multiplier, string>() {
+        [Multiplier.Zero] = "res://assets/mult/Zero.png",
         [Multiplier.Quarter] = "res://assets/mult/Quarter.png",
         [Multiplier.Third] = "res://assets/mult/Third.png",
         [Multiplier.Half] = "res://assets/mult/Half.png",
