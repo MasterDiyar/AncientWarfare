@@ -10,10 +10,16 @@ public class Unit : Node2D
 	[Export] public float MaxDamage = 5;
 
 	private Timer timer;
+	
+	public float hp = 0;
+
+	private Item heal, weapon, armor;
 	public override void _Ready()
 	{
 		timer = GetNode<Timer>("Timer");
 		timer.Connect("timeout", this, nameof(ActBlock));
+		
+		hp = MaxHp;
 	}
 
 	void ActBlock()
