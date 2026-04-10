@@ -16,36 +16,28 @@ public class Unit : Node2D
 	private Item heal, weapon, armor;
 	public override void _Ready()
 	{
+		heal = ItemFactory.HealWand();
+		weapon = ItemFactory.Sword();
+		hp = MaxHp;
 		timer = GetNode<Timer>("Timer");
 		timer.Connect("timeout", this, nameof(ActBlock));
-		
-		hp = MaxHp;
 	}
 
-	void ActBlock()
+	void ActBlock(Block block)
 	{
-		var block = blocks[currentBlock];
 
 		switch (block.Act)
 		{
 			case Act.Heal:
+				heal.AddDamage(NumGetter.GetNumFromMultiplier(block.Multiplier), this);
+				break;
+			case Act.Attack:
+				
 				break;
 		}
 		
 		
-		currentBlock++;
 	}
-
-	int currentBlock = 0;
-	Block[] blocks;
-
-	void ParseBlocks()
-	{
-		foreach (Node childs in GetChildren())
-			if (childs is Block bc) blocks = blocks.Append(bc).ToArray();
-		
-	}
-	
 	
 }
 }

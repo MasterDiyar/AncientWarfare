@@ -10,7 +10,9 @@ namespace Chaos.script.player
         public static Item Sword() => new Item("Sword", 10, Item.ItemType.Weapon, new List<Vector2>() 
         { Vector2.Zero, Vector2.Down, Vector2.One, Vector2.Right }.Select(i => i + Vector2.Up/2).ToList());
         
-        public static Item Axe() => new Item("Sword", 5, Item.ItemType.Weapon, new List<Vector2>() 
+        public static Item Axe() => new Item("Axe", 5, Item.ItemType.Weapon, new List<Vector2>() 
             { Vector2.Up, Vector2.Down * 2, Vector2.One * 0.5f }.Select(i => i + Vector2.Up/2).ToList());
+        
+        public static Item HealWand() => new Item("Heal Wand", 7, Item.ItemType.Heal, new List<Vector2>());
     }
 }

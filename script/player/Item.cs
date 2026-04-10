@@ -24,6 +24,11 @@ namespace Chaos.script.player
             Type = type;
             AttackArea = attackArea;
         }
+
+        public void Attack()
+        {
+            
+        }
         
         public void AddDamage(float multiplier, Unit who)
         {
