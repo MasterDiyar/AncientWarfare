@@ -16,6 +16,7 @@ namespace Chaos.script.player
         public List<Vector2> AttackArea;
         
         public ItemType Type;
+        private PackedScene attackAreaScene = GD.Load<PackedScene>("res://scene/units/AttackArea.tscn");
         
         public Item(string name, float damage, ItemType type, List<Vector2> attackArea)
         {
@@ -25,9 +26,12 @@ namespace Chaos.script.player
             AttackArea = attackArea;
         }
 
-        public void Attack()
+        public void Attack(Block block)
         {
+            var attackAreaNode = attackAreaScene.Instance<AttackArea>();
             
+            
+            GameManager.PausableNode.AddChild(attackAreaNode);
         }
         
         public void AddDamage(float multiplier, Unit who)

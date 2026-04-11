@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Godot;
 
 namespace Chaos.script.player
 {
@@ -22,5 +23,23 @@ namespace Chaos.script.player
         };
         
         public static float GetNumFromMultiplier(Multiplier multiplier) => multDict[multiplier];
+
+        public static readonly Dictionary<Direction, float> Rotation = new Dictionary<Direction, float>()
+        {
+            [Direction.Up] = Mathf.Pi / 2,
+            [Direction.Down] = -Mathf.Pi / 2,
+            [Direction.Left] = Mathf.Pi,
+            [Direction.Right] = 0,
+            [Direction.Here] = 0
+        };
+        
+        public static readonly Dictionary<Direction, Vector2> Position = new Dictionary<Direction, Vector2>()
+        {
+            [Direction.Up] = Vector2.Up,
+            [Direction.Down] = Vector2.Down,
+            [Direction.Left] = Vector2.Left,
+            [Direction.Right] = Vector2.Right,
+            [Direction.Here] = Vector2.Zero
+        };
     }
 }

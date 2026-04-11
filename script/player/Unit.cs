@@ -5,7 +5,7 @@ using System.Linq;
 namespace Chaos.script.player{
 public class Unit : Node2D
 {
-
+	[Export] bool IsUser = false;
 	[Export] public float MaxHp = 100;
 	[Export] public float MaxDamage = 5;
 
@@ -32,11 +32,17 @@ public class Unit : Node2D
 				heal.AddDamage(NumGetter.GetNumFromMultiplier(block.Multiplier), this);
 				break;
 			case Act.Attack:
-				
+				weapon.Attack(block);
 				break;
 		}
-		
-		
+	}
+
+	Unit FindOtherUnit()
+	{
+		foreach (Node sons in GetParent().GetChildren())
+			if (sons is Unit uit && uit != this)
+				return uit;
+		return null;
 	}
 	
 }
